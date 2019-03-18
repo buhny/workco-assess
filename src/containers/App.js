@@ -1,15 +1,16 @@
-import React from 'react'
-import ProductsContainer from './ProductsContainer'
-import CartContainer from './CartContainer'
+import "../sass/styles.scss";
+import React from "react";
+import ProductsContainer from "./ProductsContainer";
+import CartContainer from "./CartContainer";
 
 const App = () => (
   <div>
-    <h2>Shopping Cart Example</h2>
-    <hr/>
+    <h1>Shopping Cart Example</h1>
+    <hr />
     <ProductsContainer />
-    <hr/>
+    <hr />
     <CartContainer />
   </div>
-)
+);
 
-export default App
+export default App;
