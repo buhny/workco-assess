@@ -1,5 +1,36 @@
+@import "./_colors.scss";
 @import "./_fonts.scss";
+@import "./_mixins.scss";
 
-body {
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+  background-color: $bg-color;
   font-family: $font-family-base;
+  font-weight: 400;
+}
+.app-wrapper {
+  padding: 20px 18px;
+  max-width: 1280px;
+  width: 100%;
+}
+h1 {
+  font-size: px2em(28px);
+  font-weight: 700;
+  letter-spacing: -0.59px;
+  line-height: 44px;
+  margin: 0;
+}
+.cart-status {
+  border-bottom: 2px solid $border-color;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.cart-status__text {
+  font-size: px2em(14px);
+  line-height: px2em(17px);
 }

@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Chivo:300,400,700");
+@import url('https://fonts.googleapis.com/css?family=Chivo:300,400,700|Lora');
 
-$font-family-headers: "Chivo", sans-serif;
-$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base: "Chivo", sans-serif;
+$font-family-alt: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-counter: 'Lora', serif;
+
+$baseFontSize: 16px;
 
 h1,
 h2 {
-  font-family: $font-family-headers;
-}
-
-h1 {
-  font-weight: 700;
+  color: $header-color;
+  font-family: $font-family-base;
 }

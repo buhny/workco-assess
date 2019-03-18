@@ -4,11 +4,8 @@ import ProductsContainer from "./ProductsContainer";
 import CartContainer from "./CartContainer";
 
 const App = () => (
-  <div>
-    <h1>Shopping Cart Example</h1>
-    <hr />
+  <div className="app-wrapper">
     <ProductsContainer />
-    <hr />
     <CartContainer />
   </div>
 );

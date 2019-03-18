@@ -2,9 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ProductsList = ({ title, children }) => (
-  <div>
-    <h3>{title}</h3>
-    <div>{children}</div>
+  <div className="products">
+    <header className="products__header">
+      <h1>{title}</h1>
+      <div className="cart-status">
+        <span className="cart-status__icon">cart icon</span> <span className="cart-status__text">Your cart is empty</span>
+      </div>
+    </header>
+    <main className="products__list">{children}</main>
   </div>
 )
 
