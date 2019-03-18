@@ -37,3 +37,24 @@ Note: You're encouraged to show your work by including multiple commits - we'll 
 You're welcome (but not required) to add any libraries you think would be helpful.
 
 Please also update this README file: we'd love to see notes on your decision-making process, links to the most exciting pieces of code, or anything else that will give us additional context when reviewing your assessment.
+
+## notes
+
+### Questions/Thoughts
+
+- do i need to relearn Sketch? I'm really missing InVision here.
+- should this be more fast/prototype-y or intentional/thinking about production concerns-y? i default to the latter. this will probably be a combo.
+- is the Lora font in the quantity ticker intentional or overlooked from v1?
+- should individual products be articles? haven't worked on much e-commerce so not sure about this, can see arguments both ways.
+
+
+### Decisions
+
+- went with design v2
+- importing from google fonts instead of serving directly
+- adding Sass because there are some css organization conventions we've developed that i really like
+- turned off Prettier because it was messing up the scss formatting i want
+- added Normalize
+- not adding another framework, would want to understand more of the site's content first
+- going BEMish with classNames
+- using CSS Grid bc i started learning it recently and want to keep playing with it. Its a little tough though because of all the wrapping divs React wants. Keep refactoring.
