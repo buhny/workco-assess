@@ -9,12 +9,14 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
       title={product.title}
       price={product.price}
       inventory={product.inventory} />
-    <button
-      className="product__btn"
-      onClick={onAddToCartClicked}
-      disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
-    </button>
+    <div className="product__btn">
+      <button
+        className="cta light-on-dark-text"
+        onClick={onAddToCartClicked}
+        disabled={product.inventory > 0 ? '' : 'disabled'}>
+        {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+      </button>
+    </div>
   </div>
 )
 

@@ -38,14 +38,17 @@ You're welcome (but not required) to add any libraries you think would be helpfu
 
 Please also update this README file: we'd love to see notes on your decision-making process, links to the most exciting pieces of code, or anything else that will give us additional context when reviewing your assessment.
 
-## notes
+## Thoughts
 
-### Questions/Thoughts
+### Questions
 
 - do i need to relearn Sketch? I'm really missing InVision here.
 - should this be more fast/prototype-y or intentional/thinking about production concerns-y? i default to the latter. this will probably be a combo.
 - is the Lora font in the quantity ticker intentional or overlooked from v1?
 - should individual products be articles? haven't worked on much e-commerce so not sure about this, can see arguments both ways.
+- what are the general padding/margin/spacing rules? I'm not discerning a real consistent pattern (ex: multiples of 8)
+- should the cart status in the header be centered to the title on the largest screens? the positioning is a little odd relative to the title.
+- questions around how the product images should behave: should they always cover their area? where should they scale from? what if there's a lot of text and the card gets really long? they don't really seem to have the same ratio between breakpoints, is that ok?
 
 
 ### Decisions
@@ -58,3 +61,5 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - not adding another framework, would want to understand more of the site's content first
 - going BEMish with classNames
 - using CSS Grid bc i started learning it recently and want to keep playing with it. Its a little tough though because of all the wrapping divs React wants. Keep refactoring.
+- added breakpoint mixin I've used in other projects. may be a bit overkill here, but I like it.
+- I've never had a project with strict rules around breakpoint implementation. I tend to add them in by larger parent blocks or sections in an effort to keep the breakpoint changes closer to the original styles they're modifying, w/o including one for every single block or selector.
