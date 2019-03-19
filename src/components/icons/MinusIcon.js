@@ -17,7 +17,7 @@ const MinusIcon = ({
     className={`svg-icon ${className || ""}`}
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <g id="Mobile-Copy-4" transform="translate(-57.000000, -239.000000)" stroke={fill} stroke-width="2">
+    <g id="Mobile-Copy-4" transform="translate(-57.000000, -239.000000)" stroke={fill} strokeWidth="2">
       <path d="M58,240 L72,240" id="Line-2"></path>
     </g>
   </svg>

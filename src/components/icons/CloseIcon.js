@@ -17,7 +17,7 @@ const CloseIcon = ({
     className={`svg-icon ${className || ""}`}
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <g id="Mobile-Copy-3" transform="translate(-280.000000, -17.000000)" stroke={fill} stroke-width="2">
+    <g id="Mobile-Copy-3" transform="translate(-280.000000, -17.000000)" stroke={fill} strokeWidth="2">
         <g id="Group" transform="translate(281.000000, 18.000000)">
             <path d="M0.476190476,0.476190476 L19.7721901,19.7721901" id="Line-3"></path>
             <path d="M19,1 L0,20" id="Line-3"></path>
