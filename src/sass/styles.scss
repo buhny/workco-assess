@@ -43,9 +43,23 @@ h1, h2, h3 {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button,
+[type="button"] {
+  background: none;
+  border: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 0; //MAKE SURE TO SET SOME OTHER FOCUS STATE FOR ACCESSIBILITY
+  }
+  &[disabled] {
+    cursor: auto;
+  }
+}
+
 .cta {
   background-color: $btn-bg;
-  border: none;
   border-radius: 20px;
   color: $btn-text-color;
   font-size: px2em(13px);
@@ -57,11 +71,8 @@ h1, h2, h3 {
   &:hover,
   &:focus {
     background-color: $btn-bg-hover;
-    cursor: pointer;
-    outline: none;
   }
   &[disabled] {
-    cursor: auto;
     background-color: $btn-bg;
     opacity: 0.3;
   }
@@ -88,6 +99,10 @@ h1, h2, h3 {
 
   .cart-status {
     color: $cart-status-color;
+
+    .icon--cart {
+      margin-right: 5px;
+    }
   }
   .cart-status__text {
     font-size: px2em(14px);
@@ -265,7 +280,6 @@ h1, h2, h3 {
   }
 }
 
-
 .cart-wrapper {
   background-color: $white;
   min-height: 100vh;
@@ -276,9 +290,24 @@ h1, h2, h3 {
   // left: 0;
 }
 .btn-close {
-  color: $btn-close;
   float: right;
+  
+  .icon--close {
+    width: 20px;
+    &>g {
+      stroke: $btn-close;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .icon--close>g {
+      stroke: $link-color-hover;
+    }
+  }
 }
+
 h3 {
   border-bottom: 1px solid $border-color;
   font-size: px2em(28px);
@@ -301,5 +330,12 @@ h3 {
   p {
     margin: 20px auto;
     max-width: 200px;
+  }
+
+  .icon--cart {
+    width: 72px;
+    &>g {
+      fill: $cart-empty;
+    }
   }
 }
