@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
+const showEmptyCart = () => (
+    <div className="cart--empty">
+      <div>cart icon</div>
+      <p>Please add some products to your cart.</p>
+    </div>
+);
+
 const Cart  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
@@ -14,18 +21,25 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    showEmptyCart()
   )
 
-  return (
+  const showTotals = hasProducts ? (
     <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>
         Checkout
       </button>
+    </div>
+  ) : null;
+
+  return (
+    <div className="cart-wrapper">
+      <button className="btn-close">X</button> {/* replace me with icon */}
+      <h3>Your cart</h3>
+      <div className="cart-nodes">{nodes}</div>
+      {showTotals}
     </div>
   )
 }

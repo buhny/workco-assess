@@ -49,6 +49,7 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - what are the general padding/margin/spacing rules? I'm not discerning a real consistent pattern (ex: multiples of 8)
 - should the cart status in the header be centered to the title on the largest screens? the positioning is a little odd relative to the title.
 - questions around how the product images should behave: should they always cover their area? where should they scale from? what if there's a lot of text and the card gets really long? they don't really seem to have the same ratio between breakpoints, is that ok?
+- cart on desktop - not really sure if there should be a scrim over the rest of the content behind or just this modal?
 
 
 ### Decisions

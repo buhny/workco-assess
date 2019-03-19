@@ -16,6 +16,11 @@ body{
   line-height: px2em(23px);
 }
 .app-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.products {
   padding: 20px 18px;
   max-width: 1280px;
   margin: 0 auto;
@@ -28,8 +33,7 @@ body{
     padding: 55px 80px;
   }
 }
-h1,
-h2 {
+h1, h2, h3 {
   color: $header-color;
   margin: 0;
 }
@@ -41,6 +45,7 @@ h2 {
 
 .cta {
   background-color: $btn-bg;
+  border: none;
   border-radius: 20px;
   color: $btn-text-color;
   font-size: px2em(13px);
@@ -257,5 +262,44 @@ h2 {
     letter-spacing: 0;
     line-height: px2em(15px);
     margin-top: 15px;
+  }
+}
+
+
+.cart-wrapper {
+  background-color: $white;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 18px 16px;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+}
+.btn-close {
+  color: $btn-close;
+  float: right;
+}
+h3 {
+  border-bottom: 1px solid $border-color;
+  font-size: px2em(28px);
+  font-weight: 700;
+  letter-spacing: -0.59px;
+  line-height: px2em(32px);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.cart--empty {
+  color: $cart-empty;
+  font-family: $font-family-alt;
+  font-size: px2em(16px);
+  letter-spacing: -0.34px;
+  line-height: px2em(23px);
+  padding-top: 40%;
+  text-align: center;
+
+  p {
+    margin: 20px auto;
+    max-width: 200px;
   }
 }
