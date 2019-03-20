@@ -64,3 +64,8 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - using CSS Grid bc i started learning it recently and want to keep playing with it. Its a little tough though because of all the wrapping divs React wants. Keep refactoring.
 - added breakpoint mixin I've used in other projects. may be a bit overkill here, but I like it.
 - I've never had a project with strict rules around breakpoint implementation. I tend to add them in by larger parent blocks or sections in an effort to keep the breakpoint changes closer to the original styles they're modifying, w/o including one for every single block or selector.
+
+
+- added icons as svgs to change their colors with css
+- made the CartStatus component to dynamically show the quantity of items in the cart & trigger cart visibility
+- there's a bug where if you add the entire qty of a product to the cart then hit checkout, the product qty doesn't reset and the buttons stay disabled.

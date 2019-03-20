@@ -1,19 +1,26 @@
 import React from 'react';
 import Icons from './icons/Icons'
 
-const isCartEmpty = props => Object.entries(props.cartQtys).length === 0 && props.cartQtys.constructor === Object;
+const checkCartQty = props => Object.entries(props.cartQtys).length === 0 && props.cartQtys.constructor === Object;
 
+const showCartClicked = () => {
+  return null;
+}
 
 const CartStatus = props => {
 
   const cartQty = cartQtyObj => Object.values(cartQtyObj).reduce((a, b) => a + b);
-  const cartStatusText = isCartEmpty(props) ? 'Your cart is empty' : `x ${cartQty(props.cartQtys)}`;
+  const isCartEmpty = checkCartQty(props);
+  const cartStatusText = isCartEmpty ? 'Your cart is empty' : `x ${cartQty(props.cartQtys)}`;
 
   return (
-    <div className="cart-status">
+    <button
+      className="cart-status"
+      disabled={isCartEmpty ? 'disabled' : ''}
+      onClick={showCartClicked}>
       <Icons name="cart" width="17px" className="icon--cart" />
       <span className="cart-status__text">{ cartStatusText }</span>
-    </div>
+    </button>
   )
 };
 

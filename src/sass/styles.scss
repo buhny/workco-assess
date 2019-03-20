@@ -99,14 +99,30 @@ button,
 
   .cart-status {
     color: $cart-status-color;
+    padding-right: 0;
 
     .icon--cart {
       margin-right: 5px;
     }
-  }
-  .cart-status__text {
-    font-size: px2em(14px);
-    line-height: px2em(17px);
+    .cart-status__text {
+      font-size: px2em(14px);
+      line-height: px2em(17px);
+    }
+
+    &:hover,
+    &:focus {
+      color: $link-color-hover;
+      .icon--cart>g {
+        fill: $link-color-hover;
+      }
+    }
+    &[disabled] {
+      opacity: 0.3;
+      color: $cart-status-color;
+      .icon--cart>g {
+        fill: $cart-status-color;
+      }
+    }
   }
 
   @include breakpoint(md) {
@@ -291,7 +307,7 @@ button,
 }
 .btn-close {
   float: right;
-  
+
   .icon--close {
     width: 20px;
     &>g {
