@@ -7,6 +7,7 @@ const setup = props => {
     <ProductsList title={props.title}>{props.children}</ProductsList>
   )
 
+  {/* Pretty sure I broke this test when I changed title to h1, text doesnt match */}
   return {
     component: component,
     children: component.children().at(1),
