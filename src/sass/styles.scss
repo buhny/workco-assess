@@ -15,6 +15,9 @@ body{
   font-weight: 400;
   line-height: px2em(23px);
 }
+header,main,section,article {
+  display: block;
+}
 .app-wrapper {
   position: relative;
   width: 100%;

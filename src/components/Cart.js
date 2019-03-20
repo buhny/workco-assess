@@ -40,14 +40,14 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
   ) : null;
 
   return (
-    <div className="cart-wrapper">
+    <section className="cart-wrapper">
       <button className="btn-close">
         <Icons name="close" className="icon--close" />
       </button>
       <h3>Your cart</h3>
       <div className="cart-nodes">{nodes}</div>
       {showTotals}
-    </div>
+    </section>
   )
 }
 
