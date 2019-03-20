@@ -37,3 +37,38 @@ Note: You're encouraged to show your work by including multiple commits - we'll 
 You're welcome (but not required) to add any libraries you think would be helpful.
 
 Please also update this README file: we'd love to see notes on your decision-making process, links to the most exciting pieces of code, or anything else that will give us additional context when reviewing your assessment.
+
+## Thoughts
+
+### Questions
+
+- do i need to relearn Sketch? I'm really missing InVision here.
+- should this be more fast/prototype-y or intentional/thinking about production concerns-y? i default to the latter. this will probably be a combo.
+- is the Lora font in the quantity ticker intentional or overlooked from v1?
+- should individual products be articles? haven't worked on much e-commerce so not sure about this, can see arguments both ways.
+- what are the general padding/margin/spacing rules? I'm not discerning a real consistent pattern (ex: multiples of 8)
+- should the cart status in the header be centered to the title on the largest screens? the positioning is a little odd relative to the title.
+- questions around how the product images should behave: should they always cover their area? where should they scale from? what if there's a lot of text and the card gets really long? they don't really seem to have the same ratio between breakpoints, is that ok?
+- cart on desktop - not really sure if there should be a scrim over the rest of the content behind or just this modal?
+
+
+### Decisions
+
+- went with design v2
+- importing from google fonts instead of serving directly
+- adding Sass because there are some css organization conventions we've developed that i really like
+- turned off Prettier because it was messing up the scss formatting i want
+- added Normalize
+- not adding another framework, would want to understand more of the site's content first
+- going BEMish with classNames
+- using CSS Grid bc i started learning it recently and want to keep playing with it. Its a little tough though because of all the wrapping divs React wants. Keep refactoring.
+- also using some flexbox
+- added breakpoint mixin I've used in other projects. may be a bit overkill here, but I like it.
+- I've never had a project with strict rules around breakpoint implementation. I tend to add them in by larger parent blocks or sections in an effort to keep the breakpoint changes closer to the original styles they're modifying, w/o including one for every single block or selector.
+- added icons as svgs to change their colors with css
+- made the CartStatus component to dynamically show the quantity of items in the cart & trigger cart visibility
+- there's a bug where if you add the entire qty of a product to the cart then hit checkout, the product qty doesn't reset and the buttons stay disabled.
+- using 3rd party images since sketch file images won't match api data anyways
+- adding axios package for api requests
+- considered using the Unsplash api for images, but would need to keep the API keys secure and didn't want to get bogged down in that. gitlab has a nice system for handling ENV keys fwiw
+- so went with direct public image urls from Lorem Picsum instead. https://picsum.photos/

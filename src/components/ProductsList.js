@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProductsList = ({ title, children }) => (
-  <div>
-    <h3>{title}</h3>
-    <div>{children}</div>
+import CartStatus from './CartStatus'
+
+const ProductsList = ({ title, children, cartQtys }) => (
+  <div className="products">
+    <header className="store__header">
+      <h1>{title}</h1>
+      <CartStatus cartQtys={cartQtys} />
+    </header>
+    <main className="products__list">{children}</main>
   </div>
 )
 

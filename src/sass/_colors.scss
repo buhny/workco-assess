@@ -1,0 +1,40 @@
+$white: #fff;
+  $product-bg: $white;
+  $btn-text-color: $white;
+  $btn-sec-icon-hover: $white;
+
+//Grays (light to dark)
+$gray-almostwhite: #f9f9f9;
+  $btn-sec-bg-disabled: $gray-almostwhite;
+
+$gray-verylight: #f5f5f5;
+  $bg-color: $gray-verylight;
+  $btn-sec-bg: $gray-verylight;
+
+$gray-lighter: #dedede;
+  $btn-sec-icon-disabled: $gray-lighter;
+
+$gray-light: #d8d8d8;
+  $border-color: $gray-light;
+
+$gray-med: #9b9b9b;
+  $prod-qty-color: $gray-med;
+  $btn-close: $gray-med;
+  $cart-empty: $gray-med;
+
+$gray-verydark: #292929;
+  $header-color: $gray-verydark;
+  $cart-status-color: $gray-verydark;
+  $link-color: $gray-verydark;
+
+//Blues
+$blue-med: #5E97D1;
+  $btn-bg: $blue-med;
+  $btn-sec-bg-hover: $blue-med;
+
+$blue-dark: #407FC0;
+  $btn-bg-hover: $blue-dark;
+  $link-color-hover: $blue-dark;
+
+$blue-darkgray: #8E939C;
+  $btn-sec-icon: $blue-darkgray;

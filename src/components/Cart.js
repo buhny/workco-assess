@@ -1,6 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Product from './Product'
+import Icons from './icons/Icons'
+
+const showEmptyCart = () => (
+    <div className="cart--empty">
+      <Icons name="cart" fill="#9b9b9b" className="icon--cart" />
+      <p>Please add some products to your cart.</p>
+    </div>
+);
 
 const Cart  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
@@ -14,19 +23,31 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    showEmptyCart()
   )
 
-  return (
+  const showTotals = hasProducts ? (
     <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
+      <Icons name="minus" fill="red" className="icon--minus" />
+      <Icons name="plus" width="20px" fill="green" className="icon--plus" />
+
       <p>Total: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>
         Checkout
       </button>
     </div>
+  ) : null;
+
+  return (
+    <section className="cart-wrapper">
+      <button className="btn-close">
+        <Icons name="close" className="icon--close" />
+      </button>
+      <h3>Your cart</h3>
+      <div className="cart-nodes">{nodes}</div>
+      {showTotals}
+    </section>
   )
 }
 

@@ -6,8 +6,8 @@ import { getVisibleProducts } from '../reducers/products'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
 
-const ProductsContainer = ({ products, addToCart }) => (
-  <ProductsList title="Products">
+const ProductsContainer = ({ products, addToCart, cartQtys }) => (
+  <ProductsList title="Acme Store" cartQtys={cartQtys}>
     {products.map(product =>
       <ProductItem
         key={product.id}
@@ -28,7 +28,8 @@ ProductsContainer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
+  products: getVisibleProducts(state.products),
+  cartQtys: state.cart.quantityById
 })
 
 export default connect(
