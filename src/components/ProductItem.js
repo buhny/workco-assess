@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
+import ProductImage from './ProductImage'
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
   <div className="product product__list-item">
-    <img className="product__img" src="" alt={product.title} />
+    <ProductImage prodId={product.id} alt={product.title} />
     <Product
       title={product.title}
       price={product.price}

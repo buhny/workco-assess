@@ -15,7 +15,7 @@ body{
   font-weight: 400;
   line-height: px2em(23px);
 }
-header,main,section,article {
+header,main,section,article,img {
   display: block;
 }
 .app-wrapper {
@@ -171,13 +171,16 @@ button,
     margin-bottom: 10px;
   }
 }
-.product__img {
+.product__img-wrapper {
+  background-color: pink;
   grid-area: img;
   margin-bottom: 24px;
+  // overflow: hidden;
+}
+.product__img {
 
-  height: 206px;
-  width: 286px;
-  background-color: pink;
+  height: auto;
+  width: 100%;
 }
 .product__desc,
 .product__btn {
@@ -235,11 +238,8 @@ button,
       "img img desc desc desc"
       "img img button button .";
   }
-  .product__img {
+  .product__img-wrapper{
     margin-bottom: 0;
-
-    height: 196px;
-    width: 268px;
   }
   .product__desc,
   .product__btn {
@@ -269,12 +269,8 @@ button,
 }
 @include breakpoint(xl) {
   .product {
+    grid-template-columns: 227.5px 227.5px repeat(3, 1fr);
     grid-template-rows: auto 115px;
-  }
-  .product__img {
-    grid-area: img;
-    height: 282px;
-    width: 455px;
   }
   .product__desc,
   .product__btn {
