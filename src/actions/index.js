@@ -1,15 +1,15 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
+import endpointProducts from '../api/products'
 
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products
 })
 
-export const getAllProducts = () => dispatch => {
-  shop.getProducts(products => {
-    dispatch(receiveProducts(products))
-  })
+export const getAllProducts = () => async dispatch => {
+  const response = await endpointProducts.get('/shopping-cart/products.json');
+  dispatch(receiveProducts(response.data));
 }
 
 const addToCartUnsafe = productId => ({

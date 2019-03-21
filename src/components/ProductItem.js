@@ -5,10 +5,10 @@ import ProductImage from './ProductImage'
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
   <div className="product product__list-item">
-    <ProductImage prodId={product.id} alt={product.title} />
+    <ProductImage prodId={product.id} alt={product.productTitle} />
     <Product
-      title={product.title}
-      price={product.price}
+      title={product.productTitle}
+      price={product.price.value}
       inventory={product.inventory} />
     <div className="product__btn">
       <button
@@ -23,8 +23,11 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      currency: PropTypes.string
+    }),
     inventory: PropTypes.number.isRequired
   }).isRequired,
   onAddToCartClicked: PropTypes.func.isRequired

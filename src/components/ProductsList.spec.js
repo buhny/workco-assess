@@ -4,10 +4,10 @@ import ProductsList from './ProductsList'
 
 const setup = props => {
   const component = shallow(
-    <ProductsList title={props.title}>{props.children}</ProductsList>
+    <ProductsList title={props.productTitle}>{props.children}</ProductsList>
   )
 
-  {/* Pretty sure I broke this test when I changed title to h1, text doesnt match */}
+  /* Pretty sure I broke this test when I changed title to h1, text doesnt match */
   return {
     component: component,
     children: component.children().at(1),
