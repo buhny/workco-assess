@@ -72,3 +72,8 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - adding axios package for api requests
 - considered using the Unsplash api for images, but would need to keep the API keys secure and didn't want to get bogged down in that. gitlab has a nice system for handling ENV keys fwiw
 - so went with direct public image urls from Lorem Picsum instead. https://picsum.photos/
+
+
+#### Task 3
+- I struggled for a while with trying to use the same flow as the initial local product data setup, but found it much easier to bypass shop.js entirely and stick to making the api call in the action
+- updating the PropTypes was unexpected and the first time I've done that, but makes sense
