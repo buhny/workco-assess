@@ -399,7 +399,40 @@ h3 {
     }
   }
   .cart__totals {
-    
+    border-top: solid 1px $border-color;
+    margin-top: 20px;
+    padding-top: 10px;
+
+    table {
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
+      letter-spacing: -0.18px;
+      line-height: px2em(17px);
+      width: 100%;
+    }
+    td {
+      padding: 10px 0;
+    }
+    td:nth-child(odd){
+      font-size: px2em(14px);
+    }
+    td:nth-child(even) {
+      font-size: px2em(14px);
+      font-weight: 300;
+      text-align: right;
+    }
+    tr.taxes {
+      td {
+        padding-bottom: 20px;
+      }
+    }
+    tr:last-child {
+      td {
+        border-top: solid 1px $border-color;
+        padding-top: 20px;
+      }
+    }
   }
   .btn--checkout {
     background-color: $btn-bg;

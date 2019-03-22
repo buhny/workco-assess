@@ -50,6 +50,7 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       <div className="cart--pop">
         {nodes}
         {showTotals}
+        <button>Update</button>
         <button
           className="btn--checkout light-on-dark-text"
           onClick={onCheckoutClicked}
