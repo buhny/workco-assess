@@ -5,6 +5,7 @@ import Product from './Product'
 import Icons from './icons/Icons'
 import ProductImage from './ProductImage'
 import CartTotals from './CartTotals'
+import Incrementer from './Incrementer'
 
 const showEmptyCart = () => (
     <div className="cart--empty">
@@ -26,20 +27,13 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
           quantity={product.quantity}
         />
         <button className="btn--remove">Remove</button>
-        <div className="qty-ticker">
-        <Icons name="minus" fill="red" className="icon--minus" />
-        QtyTicker
-        <Icons name="plus" width="20px" fill="green" className="icon--plus" />
-        </div>
+        <Incrementer qty={product.quantity} />
       </div>
     )
   ) : (
     showEmptyCart()
   )
 
-  const showTotals = hasProducts ? (
-    <CartTotals subtotal={total} />
-  ) : null;
 
   return (
     <section className="cart-wrapper">
@@ -49,14 +43,22 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       <h3>Your cart</h3>
       <div className="cart--pop">
         {nodes}
-        {showTotals}
-        <button>Update</button>
-        <button
-          className="btn--checkout light-on-dark-text"
-          onClick={onCheckoutClicked}
-          disabled={hasProducts ? '' : 'disabled'}>
-          Checkout
-        </button>
+        { hasProducts ? (
+          <div>
+            <CartTotals subtotal={total} />
+            <button
+              className="btn--update"
+              disabled={ null/* disable unless quantities change */}
+              onClick={ null /* update qtys */ }>Update</button>
+            <button
+              className="btn--checkout light-on-dark-text"
+              onClick={onCheckoutClicked}
+              disabled={hasProducts ? '' : 'disabled'}>
+              Checkout
+            </button>
+          </div>
+        ) : null }
+
       </div>
     </section>
   )

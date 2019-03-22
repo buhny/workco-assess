@@ -3,6 +3,9 @@ $white: #fff;
   $btn-text-color: $white;
   $btn-sec-icon-hover: $white;
 
+$black: #000;
+  $incrementer-number-color: $black;
+
 //Grays (light to dark)
 $gray-almostwhite: #f9f9f9;
   $btn-sec-bg-disabled: $gray-almostwhite;
@@ -16,6 +19,7 @@ $gray-lighter: #dedede;
 
 $gray-light: #d8d8d8;
   $border-color: $gray-light;
+  $btn-sec-stroke-disabled: $gray-light;
 
 $gray-med: #9b9b9b;
   $prod-qty-color: $gray-med;

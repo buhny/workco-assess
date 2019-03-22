@@ -50,6 +50,7 @@ button,
 [type="button"] {
   background: none;
   border: none;
+  transition: background-color 0.5s ease;
 
   &:hover,
   &:focus {
@@ -298,7 +299,7 @@ button,
   background-color: $white;
   min-height: 100vh;
   min-width: 100vw;
-  padding: 18px 16px;
+  padding: 18px 16px 63px;  //extra padding on the bottom for checkout button
   // position: absolute;
   // top: 0;
   // left: 0;
@@ -363,7 +364,8 @@ h3 {
     grid-template-areas:
       "pic prodDesc"
       "pic removeItem"
-      "ticker ticker";
+      "incrementer incrementer";
+    margin-bottom: 20px;
 
     .product__img-wrapper {
       grid-area: pic;
@@ -394,9 +396,70 @@ h3 {
       padding: 0;
       text-align: left;
     }
-    .qty-ticker {
-      grid-area: ticker;
+    .incrementer {
+      grid-area: incrementer;
+
+      align-items: stretch;
+      display: flex;
+      justify-content: space-evenly;
     }
+    .incrementer__decrement,
+    .incrementer__increment,
+    .incrementer__qty {
+      align-items: center;
+      display: flex;
+      border: 1px solid $btn-sec-bg;
+      flex-grow: 1;
+      height: 40px;
+      justify-content: center;
+      text-align: center;
+      width: 33.33%;
+    }
+    .incrementer__decrement,
+    .incrementer__increment {
+      background-color: $btn-sec-bg;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      .icon {
+        height: auto;
+        width: 14px;
+        &>g {
+          stroke: $btn-sec-icon;
+          transition: stroke 0.5s ease;
+        }
+      }
+      &:focus,
+      &:hover {
+        background-color: $btn-sec-bg-hover;
+        border-color: $btn-sec-bg-hover;
+        .icon>g {
+          stroke: $btn-text-color;
+        }
+      }
+      &:disabled {
+        cursor: auto;
+        background-color: $btn-sec-bg-disabled;
+        .icon>g {
+          stroke: $btn-sec-stroke-disabled;
+        }
+      }
+    }
+    .incrementer__decrement{
+      border-radius: 20px 0 0 20px;
+    }
+    .incrementer__increment {
+      border-radius: 0 20px 20px 0;
+    }
+    .incrementer__qty {
+      border-right: none;
+      border-left: none;
+      color: $incrementer-number-color;
+      font-family: $font-family-counter;
+      font-size: px2em(14px);
+      letter-spacing: -0.59px;
+      line-height: px2em(18px);
+    }
+
   }
   .cart__totals {
     border-top: solid 1px $border-color;
@@ -434,6 +497,21 @@ h3 {
       }
     }
   }
+  .btn--update {
+    border: solid 1px $border-color;
+    font-size: px2em(14px);
+    line-height: px2em(17px);
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      color: $btn-text-color;
+      background-color: $btn-sec-bg-hover;
+    }
+  }
   .btn--checkout {
     background-color: $btn-bg;
     bottom: 0;
@@ -447,12 +525,9 @@ h3 {
     text-transform: uppercase;
     width: 100%;
 
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: $btn-bg-hover;
-    }
-
-    &[disabled] {
-      display: none;
     }
   }
 }

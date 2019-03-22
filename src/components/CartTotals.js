@@ -19,7 +19,7 @@ const CartTotals = ({subtotal}) => {
             <td>Taxes</td>
             <td>{tax}</td>
           </tr>
-          <tr className="grand-total">
+          <tr>
             <td>Total</td>
             <td>{(subtotalNum + tax).toFixed(2)}</td>
           </tr>

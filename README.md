@@ -77,3 +77,9 @@ Please also update this README file: we'd love to see notes on your decision-mak
 #### Task 3
 - I struggled for a while with trying to use the same flow as the initial local product data setup, but found it much easier to bypass shop.js entirely and stick to making the api call in the action
 - updating the PropTypes was unexpected and the first time I've done that, but makes sense
+
+
+#### Task 2
+- Styling the cart further and deciding what additional components I want to make.
+- Went back and forth on using a definition list or a table for the subtotal/taxes/total and ultimately went with a table because it seems more appropriate semantically.
+- Decided to try using React.Fragments, but after some errors discovered this version of React was too old and feels possibly out-of-bounds to update it.
