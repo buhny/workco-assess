@@ -16,7 +16,10 @@ CartContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     productTitle: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      currency: PropTypes.string
+    }),
     quantity: PropTypes.number.isRequired
   })).isRequired,
   total: PropTypes.string,
