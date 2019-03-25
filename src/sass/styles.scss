@@ -104,9 +104,13 @@ button,
   .cart-status {
     color: $cart-status-color;
     padding-right: 0;
+    transition: all 0.5s ease;
 
     .icon--cart {
       margin-right: 5px;
+      &>g{
+        transition: all 0.5s ease;
+      }
     }
     .cart-status__text {
       font-size: px2em(14px);
@@ -361,6 +365,7 @@ button,
     width: 20px;
     &>g {
       stroke: $btn-close;
+      transition: all 0.5s ease;
     }
   }
 
@@ -369,6 +374,11 @@ button,
   &:focus-within {
     .icon--close>g {
       stroke: $link-color-hover;
+    }
+  }
+  @include breakpoint(md) {
+    .icon--close {
+      width: 30px;
     }
   }
 }
@@ -411,6 +421,16 @@ h3 {
     justify-content: center;
     min-height: 30vh;
     padding-top: 20px;
+
+    .icon--cart {
+      width: 94.67px;
+    }
+    p {
+      font-size: px2em(21px);
+      letter-spacing: -0.44px;
+      line-height: px2em(28px);
+      margin-top: 24px;
+    }
   }
 }
 .cart--pop {
@@ -520,6 +540,7 @@ h3 {
       &:disabled {
         cursor: auto;
         background-color: $btn-sec-bg-disabled;
+        border-color: $btn-sec-bg-disabled;
         .icon>g {
           stroke: $btn-sec-stroke-disabled;
         }
@@ -539,13 +560,42 @@ h3 {
       font-size: px2em(14px);
       letter-spacing: -0.59px;
       line-height: px2em(18px);
+      &:hover {
+        cursor: auto;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    @include breakpoint(md) {
+      grid-template-columns: 40% auto;
+      margin-bottom: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+
+      .product__title {
+        font-size: px2em(24px);
+      }
+      .product__price {
+        font-size: px2em(18px);
+      }
+      .incrementer__qty {
+        font-size: px2em(16px);
+      }
+      .incrementer__decrement .icon,
+      .incrementer__increment .icon {
+        width: 16px;
+      }
     }
   }
 
   .cart__bill {
-
     @include breakpoint(md) {
       flex-grow: 1;
+      margin-left: 20px;
     }
   }
   .cart__totals {
@@ -563,12 +613,9 @@ h3 {
     }
     td {
       padding: 10px 0;
-    }
-    td:nth-child(odd){
       font-size: px2em(14px);
     }
     td:nth-child(even) {
-      font-size: px2em(14px);
       font-weight: 300;
       text-align: right;
     }
@@ -583,6 +630,20 @@ h3 {
         padding-top: 20px;
       }
     }
+    @include breakpoint(md) {
+      border: none;
+      margin-top: 0;
+      padding-top: 0;
+
+      tr:first-child td {
+        padding-top: 0;
+      }
+
+      td {
+        font-size: px2em(16px);
+        padding: 12px 0;
+      }
+    }
   }
   .btn--update {
     border: solid 1px $border-color;
@@ -591,12 +652,18 @@ h3 {
     margin-top: 10px;
     padding: 10px 20px;
     text-align: center;
+    transition: all 0.5s ease;
     width: 100%;
 
     &:hover,
     &:focus {
       color: $btn-text-color;
       background-color: $btn-sec-bg-hover;
+      border-color: $btn-sec-bg-hover;
+    }
+    @include breakpoint(md) {
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
   }
   .btn--checkout {
@@ -618,7 +685,9 @@ h3 {
       background-color: $btn-bg-hover;
     }
     @include breakpoint(md) {
-      margin-top: 20px;
+      margin-top: 30px;
+      padding-top: 16px;
+      padding-bottom: 16px;
       position: relative;
     }
   }
