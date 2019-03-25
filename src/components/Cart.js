@@ -14,20 +14,32 @@ const showEmptyCart = () => (
     </div>
 );
 
-
-const Cart  = ({ products, total, onCheckoutClicked }) => {
+const Cart  = ({ products, total, onCheckoutClicked, onRemoveClicked, onIncrementClicked, onDecrementClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
-      <div className="cart--item" key={product.id}>
+      <div className="cart__item" key={product.id}>
         <ProductImage prodId={product.id} alt={product.productTitle} />
         <Product
           title={product.productTitle}
           price={product.price.value}
           quantity={product.quantity}
         />
-        <button className="btn--remove">Remove</button>
-        <Incrementer qty={product.quantity} />
+        <div className="cart__remove">
+          <button
+            className="btn--remove"
+            onClick={() => onRemoveClicked(product)}
+          >
+            Remove
+          </button>
+        </div>
+        <Incrementer
+          inv={product.inventory}
+          qty={product.quantity}
+          displayQty={product.displayQty}
+          onIncrementClicked={() => onIncrementClicked(product.id)}
+          onDecrementClicked={() => onDecrementClicked(product.id)}
+        />
       </div>
     )
   ) : (
@@ -42,9 +54,11 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       </button>
       <h3>Your cart</h3>
       <div className="cart--pop">
-        {nodes}
+        <div className="cart__items">
+          {nodes}
+        </div>
         { hasProducts ? (
-          <div>
+          <div className="cart__bill">
             <CartTotals subtotal={total} />
             <button
               className="btn--update"

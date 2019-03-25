@@ -297,12 +297,21 @@ button,
 
 .cart-wrapper {
   background-color: $white;
+  border-radius: 14px;
   min-height: 100vh;
   min-width: 100vw;
   padding: 18px 16px 63px;  //extra padding on the bottom for checkout button
   // position: absolute;
   // top: 0;
   // left: 0;
+  @include breakpoint(md) {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 780px;
+    min-height: 50vh;
+    min-width: 768px;
+  }
 }
 .btn-close {
   float: right;
@@ -355,12 +364,23 @@ h3 {
   }
 }
 .cart--pop {
-  .cart--item {
+  @include breakpoint(md) {
+    display: flex
+  }
+  .cart__items {
+
+    @include breakpoint(md) {
+      margin-right: 20px;
+      flex-grow: 2;
+      width: 33.33%;
+    }
+  }
+  .cart__item {
     display: grid;
     grid-column-gap: 14px;
     grid-row-gap: 20px;
     grid-template-columns: 38% auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 16px auto;
     grid-template-areas:
       "pic prodDesc"
       "pic removeItem"
@@ -387,14 +407,22 @@ h3 {
       line-height: px2em(17px);
       padding-top: 0;
     }
+    .cart__remove {
+      align-self: center;
+      grid-area: removeItem;
+    }
     .btn--remove {
       color: $remove-text-color;
       font-family: $font-family-alt;
       font-size: px2em(14px);
-      grid-area: removeItem;
       line-height: px2em(16px);
       padding: 0;
       text-align: left;
+
+      &:focus,
+      &:hover {
+        color: $btn-bg-hover;
+      }
     }
     .incrementer {
       grid-area: incrementer;
@@ -459,7 +487,13 @@ h3 {
       letter-spacing: -0.59px;
       line-height: px2em(18px);
     }
+  }
 
+  .cart__bill {
+
+    @include breakpoint(md) {
+      flex-grow: 1;
+    }
   }
   .cart__totals {
     border-top: solid 1px $border-color;
@@ -528,6 +562,10 @@ h3 {
     &:hover,
     &:focus{
       background-color: $btn-bg-hover;
+    }
+    @include breakpoint(md) {
+      margin-top: 20px;
+      position: relative;
     }
   }
 }

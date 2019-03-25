@@ -23,6 +23,31 @@ export const addToCart = productId => (dispatch, getState) => {
   }
 }
 
+export const removeFromCart = product => (dispatch, getState) => {
+  // need to:
+  // 1. remove from addedIds
+  // 2. remove from quantitybyId
+  // 3. reset inventory to initial
+  dispatch({
+    type: types.REMOVE_FROM_CART,
+    product
+  })
+}
+
+export const cartQtyIncrement = productId => (dispatch, getState) => {
+  dispatch({
+    type: types.CART_QTY_INCREMENT,
+    productId
+  })
+}
+
+export const cartQtyDecrement = productId => (dispatch, getState) => {
+  dispatch({
+    type: types.CART_QTY_DECREMENT,
+    productId
+  })
+}
+
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 

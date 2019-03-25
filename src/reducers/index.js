@@ -9,6 +9,7 @@ export default combineReducers({
 
 const getAddedIds = state => fromCart.getAddedIds(state.cart)
 const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
+const getDisplayQty = (state, id) => fromCart.getDisplayQty(state.cart, id)
 const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
 
 export const getTotal = state =>
@@ -22,5 +23,6 @@ export const getTotal = state =>
 export const getCartProducts = state =>
   getAddedIds(state).map(id => ({
     ...getProduct(state, id),
-    quantity: getQuantity(state, id)
+    quantity: getQuantity(state, id),
+    displayQty: getDisplayQty(state, id)
   }))
