@@ -1,18 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
+
+import { addToCart, openCart } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
+// import { getIsCartHidden } from '../reducers'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
 
-const ProductsContainer = ({ products, addToCart, cartQtys }) => (
-  <ProductsList title="Acme Store" cartQtys={cartQtys}>
+const ProductsContainer = ({ products, addToCart, cartQtys, openCart }) => (
+  <ProductsList
+    title="Acme Store"
+    cartQtys={cartQtys}
+    onOpenClicked={ () => openCart() }
+    // isCartHidden={isCartHidden}
+  >
     {products.map(product =>
       <ProductItem
         key={product.id}
         product={product}
-        onAddToCartClicked={() => addToCart(product.id)} />
+        onAddToCartClicked={() => addToCart(product.id)}
+      />
     )}
   </ProductsList>
 )
@@ -37,5 +45,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart }
+  { addToCart, openCart }
 )(ProductsContainer)

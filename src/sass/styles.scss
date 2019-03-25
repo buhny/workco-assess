@@ -50,6 +50,7 @@ button,
 [type="button"] {
   background: none;
   border: none;
+  transition: background-color 0.5s ease;
 
   &:hover,
   &:focus {
@@ -103,9 +104,13 @@ button,
   .cart-status {
     color: $cart-status-color;
     padding-right: 0;
+    transition: all 0.5s ease;
 
     .icon--cart {
       margin-right: 5px;
+      &>g{
+        transition: all 0.5s ease;
+      }
     }
     .cart-status__text {
       font-size: px2em(14px);
@@ -293,15 +298,65 @@ button,
     margin-top: 15px;
   }
 }
-
+.cart__bg {
+  align-items: center;
+  background-color: rgba(9,9,9,0.09);
+  display: flex;
+  bottom: 0;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  visibility: visible;
+  width: 100vw;
+  transition: all 0.5s ease;
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+  @include breakpoint(md) {
+  }
+}
 .cart-wrapper {
   background-color: $white;
+  bottom: 0;
+  left: 0;
   min-height: 100vh;
   min-width: 100vw;
-  padding: 18px 16px;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
+  padding: 18px 16px 63px;  //extra padding on the bottom for checkout button
+  position: fixed;
+  top: 0;
+  transition: all 0.5s ease;
+  &.hidden {
+    top: 101vh;
+
+    .btn--checkout {
+      bottom: -50px;
+    }
+  }
+  @include breakpoint(md) {
+    bottom: auto;
+    border-radius: 14px;
+    height: auto;
+    left: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 780px;
+    min-height: 50vh;
+    min-width: 768px;
+    padding: 44px 50px;
+    position: absolute;
+    top: auto;
+    &.hidden {
+      top: auto;
+      .btn--checkout {
+        bottom: auto;
+      }
+    }
+  }
 }
 .btn-close {
   float: right;
@@ -310,6 +365,7 @@ button,
     width: 20px;
     &>g {
       stroke: $btn-close;
+      transition: all 0.5s ease;
     }
   }
 
@@ -318,6 +374,11 @@ button,
   &:focus-within {
     .icon--close>g {
       stroke: $link-color-hover;
+    }
+  }
+  @include breakpoint(md) {
+    .icon--close {
+      width: 30px;
     }
   }
 }
@@ -338,7 +399,7 @@ h3 {
   font-size: px2em(16px);
   letter-spacing: -0.34px;
   line-height: px2em(23px);
-  padding-top: 40%;
+  padding-top: 30vh;
   text-align: center;
 
   p {
@@ -350,6 +411,284 @@ h3 {
     width: 72px;
     &>g {
       fill: $cart-empty;
+    }
+  }
+  @include breakpoint(md) {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 30vh;
+    padding-top: 20px;
+
+    .icon--cart {
+      width: 94.67px;
+    }
+    p {
+      font-size: px2em(21px);
+      letter-spacing: -0.44px;
+      line-height: px2em(28px);
+      margin-top: 24px;
+    }
+  }
+}
+.cart--pop {
+  max-height: 72vh;
+  overflow: auto;
+  padding-bottom: 20px;
+  @include breakpoint(md) {
+    display: flex
+  }
+  .cart__items {
+
+    @include breakpoint(md) {
+      margin-right: 20px;
+      flex-grow: 2;
+      width: 33.33%;
+    }
+  }
+  .cart__item {
+    display: grid;
+    grid-column-gap: 14px;
+    grid-row-gap: 20px;
+    grid-template-columns: 38% auto;
+    grid-template-rows: auto 16px auto;
+    grid-template-areas:
+      "pic prodDesc"
+      "pic removeItem"
+      "incrementer incrementer";
+    margin-bottom: 20px;
+
+    .product__img-wrapper {
+      grid-area: pic;
+      margin-bottom: 0;
+    }
+    .product__desc {
+      display: block;
+      grid-area: prodDesc;
+      padding: 0
+    }
+    .product__title {
+      font-size: px2em(16px);
+      letter-spacing: -0.17px;
+      line-height: px2em(19px);
+    }
+    .product__price {
+      font-size: px2em(14px);
+      letter-spacing: -0.18px;
+      line-height: px2em(17px);
+      padding-top: 0;
+    }
+    .cart__remove {
+      align-self: center;
+      grid-area: removeItem;
+    }
+    .btn--remove {
+      color: $remove-text-color;
+      font-family: $font-family-alt;
+      font-size: px2em(14px);
+      line-height: px2em(16px);
+      padding: 0;
+      text-align: left;
+
+      &:focus,
+      &:hover {
+        color: $btn-bg-hover;
+      }
+    }
+    .incrementer {
+      grid-area: incrementer;
+
+      align-items: stretch;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .incrementer__decrement,
+    .incrementer__increment,
+    .incrementer__qty {
+      align-items: center;
+      display: flex;
+      border: 1px solid $btn-sec-bg;
+      flex-grow: 1;
+      height: 40px;
+      justify-content: center;
+      text-align: center;
+      width: 33.33%;
+    }
+    .incrementer__decrement,
+    .incrementer__increment {
+      background-color: $btn-sec-bg;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      .icon {
+        height: auto;
+        width: 14px;
+        &>g {
+          stroke: $btn-sec-icon;
+          transition: stroke 0.5s ease;
+        }
+      }
+      &:focus,
+      &:hover {
+        background-color: $btn-sec-bg-hover;
+        border-color: $btn-sec-bg-hover;
+        .icon>g {
+          stroke: $btn-text-color;
+        }
+      }
+      &:disabled {
+        cursor: auto;
+        background-color: $btn-sec-bg-disabled;
+        border-color: $btn-sec-bg-disabled;
+        .icon>g {
+          stroke: $btn-sec-stroke-disabled;
+        }
+      }
+    }
+    .incrementer__decrement{
+      border-radius: 20px 0 0 20px;
+    }
+    .incrementer__increment {
+      border-radius: 0 20px 20px 0;
+    }
+    .incrementer__qty {
+      border-right: none;
+      border-left: none;
+      color: $incrementer-number-color;
+      font-family: $font-family-counter;
+      font-size: px2em(14px);
+      letter-spacing: -0.59px;
+      line-height: px2em(18px);
+      &:hover {
+        cursor: auto;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    @include breakpoint(md) {
+      grid-template-columns: 40% auto;
+      margin-bottom: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+
+      .product__title {
+        font-size: px2em(24px);
+      }
+      .product__price {
+        font-size: px2em(18px);
+      }
+      .incrementer__qty {
+        font-size: px2em(16px);
+      }
+      .incrementer__decrement .icon,
+      .incrementer__increment .icon {
+        width: 16px;
+      }
+    }
+  }
+
+  .cart__bill {
+    @include breakpoint(md) {
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+  }
+  .cart__totals {
+    border-top: solid 1px $border-color;
+    margin-top: 20px;
+    padding-top: 10px;
+
+    table {
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
+      letter-spacing: -0.18px;
+      line-height: px2em(17px);
+      width: 100%;
+    }
+    td {
+      padding: 10px 0;
+      font-size: px2em(14px);
+    }
+    td:nth-child(even) {
+      font-weight: 300;
+      text-align: right;
+    }
+    tr.taxes {
+      td {
+        padding-bottom: 20px;
+      }
+    }
+    tr:last-child {
+      td {
+        border-top: solid 1px $border-color;
+        padding-top: 20px;
+      }
+    }
+    @include breakpoint(md) {
+      border: none;
+      margin-top: 0;
+      padding-top: 0;
+
+      tr:first-child td {
+        padding-top: 0;
+      }
+
+      td {
+        font-size: px2em(16px);
+        padding: 12px 0;
+      }
+    }
+  }
+  .btn--update {
+    border: solid 1px $border-color;
+    font-size: px2em(14px);
+    line-height: px2em(17px);
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    transition: all 0.5s ease;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      color: $btn-text-color;
+      background-color: $btn-sec-bg-hover;
+      border-color: $btn-sec-bg-hover;
+    }
+    @include breakpoint(md) {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+  .btn--checkout {
+    background-color: $btn-bg;
+    bottom: 0;
+    color: $btn-text-color;
+    font-size: px2em(14px);
+    left: 0;
+    letter-spacing: -0.15px;
+    line-height: px2em(17px);
+    padding: 13px 20px;
+    position: fixed;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+    width: 100%;
+
+    &:hover,
+    &:focus{
+      background-color: $btn-bg-hover;
+    }
+    @include breakpoint(md) {
+      margin-top: 30px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      position: relative;
     }
   }
 }

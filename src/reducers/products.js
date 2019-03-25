@@ -1,5 +1,11 @@
+import _ from 'lodash'
 import { combineReducers } from 'redux'
-import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
+import {
+  RECEIVE_PRODUCTS,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  UPDATE_CART
+} from '../constants/ActionTypes'
 
 const products = (state, action) => {
   switch (action.type) {
@@ -23,6 +29,21 @@ const byId = (state = {}, action) => {
           return obj
         }, {})
       }
+    case REMOVE_FROM_CART:
+      const prodId = action.product.id
+      const updatedInventory = state[prodId].inventory + action.product.quantity
+
+      return {
+        ...state,
+        [prodId]: { ...state[prodId], inventory: updatedInventory }
+      }
+    case UPDATE_CART:
+      const updatedQty = _.reduce( action.qtyDifference, ( result, value, key ) => {
+        return {...result, [key]: state[key].inventory + action.qtyDifference[key] }
+      }, {})
+      // Need to map the new inventory quantities back into state here
+      // but stuck.
+      return state
     default:
       const { productId } = action
       if (productId) {

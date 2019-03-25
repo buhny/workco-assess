@@ -3,6 +3,9 @@ $white: #fff;
   $btn-text-color: $white;
   $btn-sec-icon-hover: $white;
 
+$black: #000;
+  $incrementer-number-color: $black;
+
 //Grays (light to dark)
 $gray-almostwhite: #f9f9f9;
   $btn-sec-bg-disabled: $gray-almostwhite;
@@ -16,6 +19,7 @@ $gray-lighter: #dedede;
 
 $gray-light: #d8d8d8;
   $border-color: $gray-light;
+  $btn-sec-stroke-disabled: $gray-light;
 
 $gray-med: #9b9b9b;
   $prod-qty-color: $gray-med;
@@ -26,6 +30,9 @@ $gray-verydark: #292929;
   $header-color: $gray-verydark;
   $cart-status-color: $gray-verydark;
   $link-color: $gray-verydark;
+
+$gray-almostblack: #090909;
+  $cart-bg: $gray-almostblack;
 
 //Blues
 $blue-med: #5E97D1;
@@ -38,3 +45,7 @@ $blue-dark: #407FC0;
 
 $blue-darkgray: #8E939C;
   $btn-sec-icon: $blue-darkgray;
+
+// Reds
+$red-dark: #cc1d39;
+  $remove-text-color: $red-dark;

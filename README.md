@@ -67,7 +67,6 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - I've never had a project with strict rules around breakpoint implementation. I tend to add them in by larger parent blocks or sections in an effort to keep the breakpoint changes closer to the original styles they're modifying, w/o including one for every single block or selector.
 - added icons as svgs to change their colors with css
 - made the CartStatus component to dynamically show the quantity of items in the cart & trigger cart visibility
-- there's a bug where if you add the entire qty of a product to the cart then hit checkout, the product qty doesn't reset and the buttons stay disabled.
 - using 3rd party images since sketch file images won't match api data anyways
 - adding axios package for api requests
 - considered using the Unsplash api for images, but would need to keep the API keys secure and didn't want to get bogged down in that. gitlab has a nice system for handling ENV keys fwiw
@@ -75,5 +74,30 @@ Please also update this README file: we'd love to see notes on your decision-mak
 
 
 #### Task 3
+
 - I struggled for a while with trying to use the same flow as the initial local product data setup, but found it much easier to bypass shop.js entirely and stick to making the api call in the action
 - updating the PropTypes was unexpected and the first time I've done that, but makes sense
+
+
+#### Task 2
+
+- Styling the cart further and deciding what additional components I want to make.
+- Went back and forth on using a definition list or a table for the subtotal/taxes/total and ultimately went with a table because it seems more appropriate semantically.
+- Decided to try using React.Fragments, but after some errors discovered this version of React was too old and feels possibly out-of-bounds to update it.
+- added lodash to help with removing values from the quantity object
+- removing items from the cart - needed to make sure cart ids & qty were emptied and inventory increased
+- incrementer is readonly since inventory amounts are low and varied
+- incrementer increments and decrements independent of the product's actual quantity. removing a product empties out the display quantity. buttons disable based on available qty or 0. need to hook it up to update btn next.
+- cart quantities are updating upon submit
+- but stuck getting product inventories to update properly
+- cart now hides and shows based on clicking cart status or cart close buttons
+- polished up some cart styles
+
+### Todos
+
+- There are things I couldn't complete in time.  Most noticably around the cart Update functionality:
+-- Update product inventories when Update is clicked
+-- Disable Update button unless quantities are changed
+- Clean up older components. I learned a lot working on this and would have like to revisit and probably refactor some of the earlier components I wrote.
+- Clean up redundancies: I'm pretty sure the Incrementer buttons could be simplified into 1 call with additional params, I'm sure there's other efficiencies I missed.
+- QA/Cross-browser testing.
