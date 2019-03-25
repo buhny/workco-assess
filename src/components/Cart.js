@@ -14,7 +14,7 @@ const showEmptyCart = () => (
     </div>
 );
 
-const Cart  = ({ products, total, onCheckoutClicked, onRemoveClicked, onIncrementClicked, onDecrementClicked }) => {
+const Cart  = ({ products, total, onCheckoutClicked, onRemoveClicked, onIncrementClicked, onDecrementClicked, onUpdateClicked, onCloseClicked, isCartHidden }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -46,35 +46,36 @@ const Cart  = ({ products, total, onCheckoutClicked, onRemoveClicked, onIncremen
     showEmptyCart()
   )
 
-
   return (
-    <section className="cart-wrapper">
-      <button className="btn-close">
-        <Icons name="close" className="icon--close" />
-      </button>
-      <h3>Your cart</h3>
-      <div className="cart--pop">
-        <div className="cart__items">
-          {nodes}
-        </div>
-        { hasProducts ? (
-          <div className="cart__bill">
-            <CartTotals subtotal={total} />
-            <button
-              className="btn--update"
-              disabled={ null/* disable unless quantities change */}
-              onClick={ null /* update qtys */ }>Update</button>
-            <button
-              className="btn--checkout light-on-dark-text"
-              onClick={onCheckoutClicked}
-              disabled={hasProducts ? '' : 'disabled'}>
-              Checkout
-            </button>
+    <div className={`cart__bg ${isCartHidden ? 'hidden' : ''}`}>
+      <section className={`cart-wrapper ${isCartHidden ? 'hidden' : ''}`}>
+        <button className="btn-close" onClick={onCloseClicked}>
+          <Icons name="close" className="icon--close" />
+        </button>
+        <h3>Your cart</h3>
+        <div className="cart--pop">
+          <div className="cart__items">
+            {nodes}
           </div>
-        ) : null }
+          { hasProducts ? (
+            <div className="cart__bill">
+              <CartTotals subtotal={total} />
+              <button
+                className="btn--update"
+                disabled={ null/* disable unless quantities change */}
+                onClick={ onUpdateClicked }>Update</button>
+              <button
+                className="btn--checkout light-on-dark-text"
+                onClick={onCheckoutClicked}
+                disabled={hasProducts ? '' : 'disabled'}>
+                Checkout
+              </button>
+            </div>
+          ) : null }
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   )
 }
 

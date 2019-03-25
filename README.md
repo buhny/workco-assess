@@ -86,3 +86,6 @@ Please also update this README file: we'd love to see notes on your decision-mak
 - removing items from the cart - needed to make sure cart ids & qty were emptied and inventory increased
 - incrementer is readonly since inventory amounts are low and varied
 - incrementer increments and decrements independent of the product's actual quantity. removing a product empties out the display quantity. buttons disable based on available qty or 0. need to hook it up to update btn next.
+- cart quantities are updating upon submit
+- but stuck getting product inventories to update properly
+- cart now hides and shows based on clicking cart status or cart close buttons

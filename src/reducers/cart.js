@@ -5,13 +5,17 @@ import {
   CHECKOUT_FAILURE,
   REMOVE_FROM_CART,
   CART_QTY_INCREMENT,
-  CART_QTY_DECREMENT
+  CART_QTY_DECREMENT,
+  UPDATE_CART,
+  CLOSE_CART,
+  OPEN_CART
 } from '../constants/ActionTypes'
 
 const initialState = {
   addedIds: [],
   quantityById: {},
-  displayQtyById: {}
+  displayQtyById: {},
+  isCartHidden: true
 }
 
 const addedIds = (state = initialState.addedIds, action) => {
@@ -69,8 +73,26 @@ export const getDisplayQty = (state, productId) =>
 
 export const getAddedIds = state => state.addedIds
 
+export const getIsCartHidden = (state) => {
+  return state.cart.isCartHidden
+}
+
 const cart = (state = initialState, action) => {
   switch (action.type) {
+    case OPEN_CART:
+      return {
+        ...state,
+        isCartHidden: false
+      }
+    case CLOSE_CART:
+      return {
+        ...state,
+        isCartHidden: true
+      }
+    case UPDATE_CART:
+      return { ...state,
+        quantityById: state.displayQtyById
+      }
     case CHECKOUT_REQUEST:
       return initialState
     case CHECKOUT_FAILURE:
@@ -79,7 +101,8 @@ const cart = (state = initialState, action) => {
       return {
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
-        displayQtyById: displayQtyById(state.displayQtyById, action)
+        displayQtyById: displayQtyById(state.displayQtyById, action),
+        isCartHidden: state.isCartHidden
       }
   }
 }

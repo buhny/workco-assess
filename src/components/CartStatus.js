@@ -3,12 +3,7 @@ import Icons from './icons/Icons'
 
 const checkCartQty = props => Object.entries(props.cartQtys).length === 0 && props.cartQtys.constructor === Object;
 
-const showCartClicked = () => {
-  return null;
-}
-
 const CartStatus = props => {
-
   const cartQty = cartQtyObj => Object.values(cartQtyObj).reduce((a, b) => a + b);
   const isCartEmpty = checkCartQty(props);
   const cartStatusText = isCartEmpty ? 'Your cart is empty' : `x ${cartQty(props.cartQtys)}`;
@@ -17,7 +12,7 @@ const CartStatus = props => {
     <button
       className="cart-status"
       disabled={isCartEmpty ? 'disabled' : ''}
-      onClick={showCartClicked}>
+      onClick={props.onOpenClicked}>
       <Icons name="cart" width="17px" className="icon--cart" />
       <span className="cart-status__text">{ cartStatusText }</span>
     </button>

@@ -26,3 +26,5 @@ export const getCartProducts = state =>
     quantity: getQuantity(state, id),
     displayQty: getDisplayQty(state, id)
   }))
+
+export const getIsCartHidden = state => fromCart.getIsCartHidden(state)

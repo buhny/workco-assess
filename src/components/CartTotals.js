@@ -13,7 +13,7 @@ const CartTotals = ({subtotal}) => {
         <tbody>
           <tr>
             <td>Subtotal</td>
-            <td>{subtotalNum}</td>
+            <td>{subtotalNum.toFixed(2)}</td>
           </tr>
           <tr className="taxes">
             <td>Taxes</td>

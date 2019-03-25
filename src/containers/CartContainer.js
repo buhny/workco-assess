@@ -2,11 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { checkout, removeFromCart, cartQtyIncrement, cartQtyDecrement } from '../actions'
-import { getTotal, getCartProducts } from '../reducers'
+import {
+  checkout,
+  removeFromCart,
+  cartQtyIncrement,
+  cartQtyDecrement,
+  updateCart,
+  closeCart
+} from '../actions'
+import { getTotal, getCartProducts, getIsCartHidden } from '../reducers'
 import Cart from '../components/Cart'
 
-const CartContainer = ({ products, total, checkout, removeFromCart, cartQtyIncrement, cartQtyDecrement }) => (
+const CartContainer = ({ products, total, checkout, removeFromCart, cartQtyIncrement, cartQtyDecrement, updateCart, closeCart, isCartHidden }) => (
   <Cart
     products={products}
     total={total}
@@ -14,6 +21,9 @@ const CartContainer = ({ products, total, checkout, removeFromCart, cartQtyIncre
     onRemoveClicked={(prod) => removeFromCart(prod)}
     onIncrementClicked={ (prod) => cartQtyIncrement(prod) }
     onDecrementClicked={ (prod) => cartQtyDecrement(prod) }
+    onUpdateClicked={ () => updateCart() }
+    onCloseClicked={ () => closeCart() }
+    isCartHidden={isCartHidden}
   />
 )
 
@@ -33,10 +43,17 @@ CartContainer.propTypes = {
 
 const mapStateToProps = (state) => ({
   products: getCartProducts(state),
-  total: getTotal(state)
+  total: getTotal(state),
+  isCartHidden: getIsCartHidden(state)
 })
 
 export default connect(
   mapStateToProps,
-  { checkout, removeFromCart, cartQtyIncrement, cartQtyDecrement }
+  { checkout,
+    removeFromCart,
+    cartQtyIncrement,
+    cartQtyDecrement,
+    updateCart,
+    closeCart
+  }
 )(CartContainer)
